@@ -60,6 +60,258 @@
       padding: 0 20px
     }
 
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.8) translateY(50px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--gold);
+    }
+
+    .modal-title {
+      font-family: Cinzel, serif;
+      color: var(--gold);
+      font-size: 2rem;
+      text-align: center;
+      margin: 0 0 30px;
+    }
+
+    .form-tabs {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .form-content {
+      display: none;
+    }
+
+    .form-content.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-input::placeholder {
+      color: var(--muted);
+    }
+
+    .form-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: #151515;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .form-btn:hover {
+      background: var(--gold-2);
+      transform: translateY(-2px);
+    }
+
+    .form-divider {
+      text-align: center;
+      margin: 20px 0;
+      color: var(--muted);
+      position: relative;
+    }
+
+    .form-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--stroke);
+    }
+
+    .form-divider span {
+      background: var(--card);
+      padding: 0 15px;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: var(--bg-soft);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .verification-step {
+      display: none;
+      text-align: center;
+    }
+
+    .verification-step.active {
+      display: block;
+    }
+
+    .verification-code {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .code-input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid var(--stroke);
+      border-radius: 8px;
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+
+    .code-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .whatsapp-info {
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .whatsapp-info i {
+      color: #25d366;
+      font-size: 20px;
+    }
+
+    .resend-code {
+      color: var(--gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .resend-code:disabled {
+      color: var(--muted);
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+
     /* HEADER */
     header {
       position: sticky;
@@ -137,13 +389,19 @@
       font-weight: 600;
       letter-spacing: .5px;
       text-transform: uppercase;
-      font-size: .9rem
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .btn.solid {
       background: var(--gold);
       color: #151515;
       border-color: var(--gold)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .section {
@@ -432,14 +690,12 @@
       border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
       max-width: 60%;
-
     }
 
     .about .photo img {
       width: 100%;
       height: auto;
       object-fit: cover;
-
     }
 
     .about .card {
@@ -547,17 +803,145 @@
         left: -8px;
         height: 14px
       }
+
+      .modal {
+        padding: 30px 20px;
+      }
+
+      .social-login {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- MODAL DE LOGIN/CADASTRO -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 class="modal-title">Bem-vindo</h2>
+      
+      <div class="form-tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" onclick="switchTab('register')">Cadastro</button>
+      </div>
+
+      <!-- FORMULÁRIO DE LOGIN -->
+      <form class="form-content active" id="loginForm">
+        <div class="login-step active" id="loginStep1">
+          <div class="form-group">
+            <label for="loginPhone">Telefone</label>
+            <input type="tel" id="loginPhone" class="form-input" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Senha</label>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Sua senha" required>
+          </div>
+          <button type="submit" class="form-btn">Entrar</button>
+        </div>
+
+        <div class="verification-step" id="loginVerification">
+          <h3 style="color: var(--gold); margin-bottom: 15px;">Verificação de Segurança</h3>
+          <div class="whatsapp-info">
+            <i class="fab fa-whatsapp"></i>
+            <span>Enviamos um código de 4 dígitos para seu WhatsApp</span>
+          </div>
+          <p style="color: var(--muted); margin: 10px 0;">Digite o código recebido:</p>
+          <div class="verification-code">
+            <input type="text" class="code-input" maxlength="1" data-index="0">
+            <input type="text" class="code-input" maxlength="1" data-index="1">
+            <input type="text" class="code-input" maxlength="1" data-index="2">
+            <input type="text" class="code-input" maxlength="1" data-index="3">
+          </div>
+          <button type="button" class="form-btn" onclick="verifyLoginCode()">Verificar Código</button>
+          <button type="button" class="resend-code" onclick="resendLoginCode()">Reenviar código</button>
+          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;" onclick="backToLogin()">← Voltar</button></p>
+        </div>
+        
+        <div class="form-divider">
+          <span>ou continue com</span>
+        </div>
+        
+        <div class="social-login">
+          <button type="button" class="social-btn">
+            <i class="fab fa-google"></i>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <i class="fab fa-facebook-f"></i>
+            Facebook
+          </button>
+        </div>
+      </form>
+
+      <!-- FORMULÁRIO DE CADASTRO -->
+      <form class="form-content" id="registerForm">
+        <div class="register-step active" id="registerStep1">
+          <div class="form-group">
+            <label for="registerName">Nome Completo</label>
+            <input type="text" id="registerName" class="form-input" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPhone">Telefone</label>
+            <input type="tel" id="registerPhone" class="form-input" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">E-mail (opcional)</label>
+            <input type="email" id="registerEmail" class="form-input" placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Senha</label>
+            <input type="password" id="registerPassword" class="form-input" placeholder="Crie uma senha" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar Senha</label>
+            <input type="password" id="confirmPassword" class="form-input" placeholder="Confirme sua senha" required>
+          </div>
+          <button type="submit" class="form-btn">Criar Conta</button>
+        </div>
+
+        <div class="verification-step" id="registerVerification">
+          <h3 style="color: var(--gold); margin-bottom: 15px;">Confirme seu WhatsApp</h3>
+          <div class="whatsapp-info">
+            <i class="fab fa-whatsapp"></i>
+            <span>Enviamos um código de 4 dígitos para seu WhatsApp</span>
+          </div>
+          <p style="color: var(--muted); margin: 10px 0;">Digite o código recebido:</p>
+          <div class="verification-code">
+            <input type="text" class="code-input register-code" maxlength="1" data-index="0">
+            <input type="text" class="code-input register-code" maxlength="1" data-index="1">
+            <input type="text" class="code-input register-code" maxlength="1" data-index="2">
+            <input type="text" class="code-input register-code" maxlength="1" data-index="3">
+          </div>
+          <button type="button" class="form-btn" onclick="verifyRegisterCode()">Confirmar Cadastro</button>
+          <button type="button" class="resend-code" onclick="resendRegisterCode()">Reenviar código</button>
+          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;" onclick="backToRegister()">← Voltar</button></p>
+        </div>
+        
+        <div class="form-divider">
+          <span>ou continue com</span>
+        </div>
+        
+        <div class="social-login">
+          <button type="button" class="social-btn">
+            <i class="fab fa-google"></i>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <i class="fab fa-facebook-f"></i>
+            Facebook
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Substitua logo.png -->
-        <img src="assets/logo.png" alt="Logo El Rhuan Barber" />
+        <img src="assets/logobgremoved.png" alt="Logo El Rhuan Barber" />
         <strong class="title">El Rhuan Barber</strong>
       </div>
       <nav>
@@ -595,7 +979,7 @@
             <span class="price">R$ 35,00</span>
           </div>
         </div>
-        <a class="btn" href="#contato">Agendar</a>
+        <button class="btn" onclick="openModal()">Agendar</button>
       </article>
 
       <!-- Outros Serviços -->
@@ -622,7 +1006,7 @@
             <span class="price">R$ 130,00</span>
           </div>
         </div>
-        <a class="btn" href="#contato">Agendar</a>
+        <button class="btn" onclick="openModal()">Agendar</button>
       </article>
 
       <!-- Combos -->
@@ -645,7 +1029,7 @@
             <span class="price">R$ 55,00</span>
           </div>
         </div>
-        <a class="btn" href="#contato">Agendar</a>
+        <button class="btn" onclick="openModal()">Agendar</button>
       </article>
     </div>
   </section>
@@ -664,7 +1048,7 @@
           <li>acesso a sorteios exclusivos</li>
           <li>acesso ao grupo VIP</li>
         </ul>
-        <a class="btn solid" href="/login">Assine já</a>
+        <button class="btn solid" onclick="openModal()">Assine já</button>
       </article>
       <!-- Plano Barba -->
       <article class="plan">
@@ -676,7 +1060,7 @@
           <li>relaxamento</li>
           <li>refri</li>
         </ul>
-        <a class="btn solid" href="/login">Assine já</a>
+        <button class="btn solid" onclick="openModal()">Assine já</button>
       </article>
       <!-- Plano Cabelo + Barba -->
       <article class="plan">
@@ -688,7 +1072,7 @@
           <li>barba</li>
           <li>relaxamento</li>
         </ul>
-        <a class="btn solid" href="/login">Assine já</a>
+        <button class="btn solid" onclick="openModal()">Assine já</button>
       </article>
     </div>
   </section>
@@ -724,7 +1108,7 @@
             <h4>Sprays Two Brothers</h4>
             <p>Sobre os sprays</p>
           </figcaption>
-          <div class="more"><a class="btn solid" href="#">Veja mais</a></div>
+          <div class="more"><button class="btn solid" onclick="openModal()">Veja mais</button></div>
         </figure>
       </div>
 
@@ -786,7 +1170,6 @@
           rota</a>
       </div>
       <div class="map">
-        <!-- Substitua pelo embed do seu endereço -->
         <iframe title="Mapa" loading="lazy" allowfullscreen
           src="https://maps.google.com/maps?q=Av.+Brasil%2C+519F+-+Centro%2C+Concei%C3%A7%C3%A3o+das+Alagoas+-+MG%2C+38120-000&t=&z=20&ie=UTF8&iwloc=&output=embed"
           frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
@@ -798,7 +1181,7 @@
   <footer id="contato">
     <div class="container foot">
       <div class="brand">
-        <img src="assets/logo.png" alt="Logo" />
+        <img src="assets/logobgremoved.png" alt="Logo" />
         <strong class="title">El Rhuan Barber</strong>
       </div>
       <div class="social" aria-label="Redes sociais">
@@ -814,6 +1197,302 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Funções do modal
+    function openModal() {
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Alternar entre abas
+    function switchTab(tabName) {
+      // Remove active das abas
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.form-content').forEach(form => form.classList.remove('active'));
+
+      // Adiciona active na aba clicada
+      event.target.classList.add('active');
+      document.getElementById(tabName + 'Form').classList.add('active');
+    }
+
+    // Variáveis para controle de verificação
+    let loginVerificationCode = '';
+    let registerVerificationCode = '';
+    let resendTimer = 0;
+
+    // Manipular envio dos formulários
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const phone = document.getElementById('loginPhone').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      if (!phone || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      // Simular verificação de credenciais
+      showLoginVerification();
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('registerName').value;
+      const phone = document.getElementById('registerPhone').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        alert('As senhas não coincidem!');
+        return;
+      }
+      
+      if (!name || !phone || !password) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+      
+      // Mostrar etapa de verificação
+      showRegisterVerification();
+    });
+
+    // Funções de verificação - LOGIN
+    function showLoginVerification() {
+      // Gerar código de verificação
+      loginVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
+      
+      // Simular envio via WhatsApp
+      const phone = document.getElementById('loginPhone').value;
+      console.log(`Código de verificação para login: ${loginVerificationCode} enviado para ${phone}`);
+      
+      // Esconder formulário e mostrar verificação
+      document.getElementById('loginStep1').style.display = 'none';
+      document.getElementById('loginVerification').classList.add('active');
+      
+      // Focar no primeiro campo de código
+      document.querySelector('#loginVerification .code-input').focus();
+      
+      // Aqui você integraria com a API do WhatsApp Business
+      alert(`Código de verificação enviado via WhatsApp para ${phone}\n(Demo: ${loginVerificationCode})`);
+    }
+
+    function verifyLoginCode() {
+      const inputs = document.querySelectorAll('#loginVerification .code-input');
+      const enteredCode = Array.from(inputs).map(input => input.value).join('');
+      
+      if (enteredCode.length !== 4) {
+        alert('Por favor, digite o código completo de 4 dígitos.');
+        return;
+      }
+      
+      if (enteredCode === loginVerificationCode) {
+        alert('Login realizado com sucesso!');
+        closeModal();
+        resetForms();
+      } else {
+        alert('Código incorreto. Tente novamente.');
+        // Limpar campos
+        inputs.forEach(input => input.value = '');
+        inputs[0].focus();
+      }
+    }
+
+    function resendLoginCode() {
+      if (resendTimer > 0) return;
+      
+      showLoginVerification();
+      startResendTimer('login');
+    }
+
+    function backToLogin() {
+      document.getElementById('loginVerification').classList.remove('active');
+      document.getElementById('loginStep1').style.display = 'block';
+      resetCodeInputs('#loginVerification');
+    }
+
+    // Funções de verificação - CADASTRO
+    function showRegisterVerification() {
+      // Gerar código de verificação
+      registerVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
+      
+      // Simular envio via WhatsApp
+      const phone = document.getElementById('registerPhone').value;
+      console.log(`Código de verificação para cadastro: ${registerVerificationCode} enviado para ${phone}`);
+      
+      // Esconder formulário e mostrar verificação
+      document.getElementById('registerStep1').style.display = 'none';
+      document.getElementById('registerVerification').classList.add('active');
+      
+      // Focar no primeiro campo de código
+      document.querySelector('#registerVerification .code-input').focus();
+      
+      // Aqui você integraria com a API do WhatsApp Business
+      alert(`Código de verificação enviado via WhatsApp para ${phone}\n(Demo: ${registerVerificationCode})`);
+    }
+
+    function verifyRegisterCode() {
+      const inputs = document.querySelectorAll('#registerVerification .code-input');
+      const enteredCode = Array.from(inputs).map(input => input.value).join('');
+      
+      if (enteredCode.length !== 4) {
+        alert('Por favor, digite o código completo de 4 dígitos.');
+        return;
+      }
+      
+      if (enteredCode === registerVerificationCode) {
+        const name = document.getElementById('registerName').value;
+        alert(`Cadastro realizado com sucesso!\nBem-vindo(a), ${name}!`);
+        closeModal();
+        resetForms();
+      } else {
+        alert('Código incorreto. Tente novamente.');
+        // Limpar campos
+        inputs.forEach(input => input.value = '');
+        inputs[0].focus();
+      }
+    }
+
+    function resendRegisterCode() {
+      if (resendTimer > 0) return;
+      
+      showRegisterVerification();
+      startResendTimer('register');
+    }
+
+    function backToRegister() {
+      document.getElementById('registerVerification').classList.remove('active');
+      document.getElementById('registerStep1').style.display = 'block';
+      resetCodeInputs('#registerVerification');
+    }
+
+    // Funções auxiliares
+    function startResendTimer(type) {
+      resendTimer = 30;
+      const button = document.querySelector(`button[onclick="resend${type.charAt(0).toUpperCase() + type.slice(1)}Code()"]`);
+      
+      const interval = setInterval(() => {
+        button.textContent = `Reenviar código (${resendTimer}s)`;
+        button.disabled = true;
+        resendTimer--;
+        
+        if (resendTimer < 0) {
+          clearInterval(interval);
+          button.textContent = 'Reenviar código';
+          button.disabled = false;
+          resendTimer = 0;
+        }
+      }, 1000);
+    }
+
+    function resetCodeInputs(selector) {
+      const inputs = document.querySelectorAll(`${selector} .code-input`);
+      inputs.forEach(input => input.value = '');
+    }
+
+    function resetForms() {
+      // Reset login
+      document.getElementById('loginStep1').style.display = 'block';
+      document.getElementById('loginVerification').classList.remove('active');
+      document.getElementById('loginForm').reset();
+      
+      // Reset register
+      document.getElementById('registerStep1').style.display = 'block';
+      document.getElementById('registerVerification').classList.remove('active');
+      document.getElementById('registerForm').reset();
+      
+      resetCodeInputs('#loginVerification');
+      resetCodeInputs('#registerVerification');
+    }
+
+    // Lógica para campos de código
+    document.addEventListener('input', function(e) {
+      if (e.target.classList.contains('code-input')) {
+        const inputs = e.target.closest('.verification-code').querySelectorAll('.code-input');
+        const currentIndex = parseInt(e.target.dataset.index);
+        
+        // Só permitir números
+        e.target.value = e.target.value.replace(/\D/g, '');
+        
+        // Mover para próximo campo
+        if (e.target.value && currentIndex < inputs.length - 1) {
+          inputs[currentIndex + 1].focus();
+        }
+        
+        // Auto-verificar quando todos os campos estiverem preenchidos
+        const allFilled = Array.from(inputs).every(input => input.value);
+        if (allFilled) {
+          setTimeout(() => {
+            const isLogin = e.target.closest('#loginVerification');
+            if (isLogin) {
+              verifyLoginCode();
+            } else {
+              verifyRegisterCode();
+            }
+          }, 500);
+        }
+      }
+    });
+
+    // Permitir backspace para voltar campo anterior
+    document.addEventListener('keydown', function(e) {
+      if (e.target.classList.contains('code-input') && e.key === 'Backspace' && !e.target.value) {
+        const inputs = e.target.closest('.verification-code').querySelectorAll('.code-input');
+        const currentIndex = parseInt(e.target.dataset.index);
+        if (currentIndex > 0) {
+          inputs[currentIndex - 1].focus();
+        }
+      }
+    });
+
+    // Máscara para telefone nos dois formulários
+    document.getElementById('loginPhone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+      value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+      e.target.value = value;
+    });
+
+    document.getElementById('registerPhone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+      value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+      e.target.value = value;
+    });
+
+    // Smooth scroll para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
