@@ -385,6 +385,7 @@
       padding: 10px 18px;
       border: 1px solid var(--gold);
       color: var(--gold);
+      background-color: var(--bg);
       border-radius: 12px;
       font-weight: 600;
       letter-spacing: .5px;
@@ -431,7 +432,8 @@
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px
+      gap: 28px;
+      align-items: stretch;
     }
 
     .service-card {
@@ -440,7 +442,26 @@
       border-radius: var(--radius);
       padding: 28px;
       text-align: center;
-      box-shadow: var(--shadow)
+      box-shadow: var(--shadow);
+
+      /* Flexbox para controlar o layout interno */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* Distribui o conteúdo */
+    }
+
+    /* Agrupa o conteúdo superior para que o botão fique na parte inferior */
+    .service-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    /* O botão ficará sempre na parte inferior */
+    .service-card .btn {
+      margin-top: auto;
+      /* Empurra o botão para baixo */
     }
 
     .icon {
@@ -821,7 +842,7 @@
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <h2 class="modal-title">Bem-vindo</h2>
-      
+
       <div class="form-tabs">
         <button class="tab-btn active" onclick="switchTab('login')">Login</button>
         <button class="tab-btn" onclick="switchTab('register')">Cadastro</button>
@@ -856,14 +877,21 @@
           </div>
           <button type="button" class="form-btn" onclick="verifyLoginCode()">Verificar Código</button>
           <button type="button" class="resend-code" onclick="resendLoginCode()">Reenviar código</button>
-          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;" onclick="backToLogin()">← Voltar</button></p>
+          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;"
+              onclick="backToLogin()">← Voltar</button></p>
         </div>
-        
+
         <div class="form-divider">
           <span>ou continue com</span>
         </div>
-        
+
         <div class="social-login">
+          <button type="button" class="social-btn" onclick="window.open('https://wa.link/sryrcm', '_blank')">
+            <a href="https://wa.link/sryrcm" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            Faça um Teste
+          </button>
           <button type="button" class="social-btn">
             <i class="fab fa-google"></i>
             Google
@@ -916,13 +944,14 @@
           </div>
           <button type="button" class="form-btn" onclick="verifyRegisterCode()">Confirmar Cadastro</button>
           <button type="button" class="resend-code" onclick="resendRegisterCode()">Reenviar código</button>
-          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;" onclick="backToRegister()">← Voltar</button></p>
+          <p><button type="button" style="background: none; border: none; color: var(--gold); cursor: pointer;"
+              onclick="backToRegister()">← Voltar</button></p>
         </div>
-        
+
         <div class="form-divider">
           <span>ou continue com</span>
         </div>
-        
+
         <div class="social-login">
           <button type="button" class="social-btn">
             <i class="fab fa-google"></i>
@@ -961,8 +990,10 @@
     <div class="grid-3">
       <!-- Cabelos -->
       <article class="service-card">
-        <div class="icon">
-          <img src="assets/cabelo.png" alt="Ícone cabelo" aria-hidden="true">
+        <div class="service-content">
+          <div class="icon">
+            <img src="assets/cabelo.png" alt="Ícone cabelo" aria-hidden="true">
+          </div>
         </div>
         <h3>Cabelos</h3>
         <div class="services-list">
@@ -1211,14 +1242,14 @@
     }
 
     // Fechar modal ao clicar fora
-    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    document.getElementById('modalOverlay').addEventListener('click', function (e) {
       if (e.target === this) {
         closeModal();
       }
     });
 
     // Fechar modal com ESC
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         closeModal();
       }
@@ -1241,37 +1272,37 @@
     let resendTimer = 0;
 
     // Manipular envio dos formulários
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const phone = document.getElementById('loginPhone').value;
       const password = document.getElementById('loginPassword').value;
-      
+
       if (!phone || !password) {
         alert('Por favor, preencha todos os campos.');
         return;
       }
-      
+
       // Simular verificação de credenciais
       showLoginVerification();
     });
 
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const name = document.getElementById('registerName').value;
       const phone = document.getElementById('registerPhone').value;
       const password = document.getElementById('registerPassword').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
-      
+
       if (password !== confirmPassword) {
         alert('As senhas não coincidem!');
         return;
       }
-      
+
       if (!name || !phone || !password) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
       }
-      
+
       // Mostrar etapa de verificação
       showRegisterVerification();
     });
@@ -1280,18 +1311,18 @@
     function showLoginVerification() {
       // Gerar código de verificação
       loginVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-      
+
       // Simular envio via WhatsApp
       const phone = document.getElementById('loginPhone').value;
       console.log(`Código de verificação para login: ${loginVerificationCode} enviado para ${phone}`);
-      
+
       // Esconder formulário e mostrar verificação
       document.getElementById('loginStep1').style.display = 'none';
       document.getElementById('loginVerification').classList.add('active');
-      
+
       // Focar no primeiro campo de código
       document.querySelector('#loginVerification .code-input').focus();
-      
+
       // Aqui você integraria com a API do WhatsApp Business
       alert(`Código de verificação enviado via WhatsApp para ${phone}\n(Demo: ${loginVerificationCode})`);
     }
@@ -1299,12 +1330,12 @@
     function verifyLoginCode() {
       const inputs = document.querySelectorAll('#loginVerification .code-input');
       const enteredCode = Array.from(inputs).map(input => input.value).join('');
-      
+
       if (enteredCode.length !== 4) {
         alert('Por favor, digite o código completo de 4 dígitos.');
         return;
       }
-      
+
       if (enteredCode === loginVerificationCode) {
         alert('Login realizado com sucesso!');
         closeModal();
@@ -1319,7 +1350,7 @@
 
     function resendLoginCode() {
       if (resendTimer > 0) return;
-      
+
       showLoginVerification();
       startResendTimer('login');
     }
@@ -1334,18 +1365,18 @@
     function showRegisterVerification() {
       // Gerar código de verificação
       registerVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-      
+
       // Simular envio via WhatsApp
       const phone = document.getElementById('registerPhone').value;
       console.log(`Código de verificação para cadastro: ${registerVerificationCode} enviado para ${phone}`);
-      
+
       // Esconder formulário e mostrar verificação
       document.getElementById('registerStep1').style.display = 'none';
       document.getElementById('registerVerification').classList.add('active');
-      
+
       // Focar no primeiro campo de código
       document.querySelector('#registerVerification .code-input').focus();
-      
+
       // Aqui você integraria com a API do WhatsApp Business
       alert(`Código de verificação enviado via WhatsApp para ${phone}\n(Demo: ${registerVerificationCode})`);
     }
@@ -1353,12 +1384,12 @@
     function verifyRegisterCode() {
       const inputs = document.querySelectorAll('#registerVerification .code-input');
       const enteredCode = Array.from(inputs).map(input => input.value).join('');
-      
+
       if (enteredCode.length !== 4) {
         alert('Por favor, digite o código completo de 4 dígitos.');
         return;
       }
-      
+
       if (enteredCode === registerVerificationCode) {
         const name = document.getElementById('registerName').value;
         alert(`Cadastro realizado com sucesso!\nBem-vindo(a), ${name}!`);
@@ -1374,7 +1405,7 @@
 
     function resendRegisterCode() {
       if (resendTimer > 0) return;
-      
+
       showRegisterVerification();
       startResendTimer('register');
     }
@@ -1389,12 +1420,12 @@
     function startResendTimer(type) {
       resendTimer = 30;
       const button = document.querySelector(`button[onclick="resend${type.charAt(0).toUpperCase() + type.slice(1)}Code()"]`);
-      
+
       const interval = setInterval(() => {
         button.textContent = `Reenviar código (${resendTimer}s)`;
         button.disabled = true;
         resendTimer--;
-        
+
         if (resendTimer < 0) {
           clearInterval(interval);
           button.textContent = 'Reenviar código';
@@ -1414,30 +1445,30 @@
       document.getElementById('loginStep1').style.display = 'block';
       document.getElementById('loginVerification').classList.remove('active');
       document.getElementById('loginForm').reset();
-      
+
       // Reset register
       document.getElementById('registerStep1').style.display = 'block';
       document.getElementById('registerVerification').classList.remove('active');
       document.getElementById('registerForm').reset();
-      
+
       resetCodeInputs('#loginVerification');
       resetCodeInputs('#registerVerification');
     }
 
     // Lógica para campos de código
-    document.addEventListener('input', function(e) {
+    document.addEventListener('input', function (e) {
       if (e.target.classList.contains('code-input')) {
         const inputs = e.target.closest('.verification-code').querySelectorAll('.code-input');
         const currentIndex = parseInt(e.target.dataset.index);
-        
+
         // Só permitir números
         e.target.value = e.target.value.replace(/\D/g, '');
-        
+
         // Mover para próximo campo
         if (e.target.value && currentIndex < inputs.length - 1) {
           inputs[currentIndex + 1].focus();
         }
-        
+
         // Auto-verificar quando todos os campos estiverem preenchidos
         const allFilled = Array.from(inputs).every(input => input.value);
         if (allFilled) {
@@ -1454,7 +1485,7 @@
     });
 
     // Permitir backspace para voltar campo anterior
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.target.classList.contains('code-input') && e.key === 'Backspace' && !e.target.value) {
         const inputs = e.target.closest('.verification-code').querySelectorAll('.code-input');
         const currentIndex = parseInt(e.target.dataset.index);
@@ -1465,14 +1496,14 @@
     });
 
     // Máscara para telefone nos dois formulários
-    document.getElementById('loginPhone').addEventListener('input', function(e) {
+    document.getElementById('loginPhone').addEventListener('input', function (e) {
       let value = e.target.value.replace(/\D/g, '');
       value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
       value = value.replace(/(\d)(\d{4})$/, '$1-$2');
       e.target.value = value;
     });
 
-    document.getElementById('registerPhone').addEventListener('input', function(e) {
+    document.getElementById('registerPhone').addEventListener('input', function (e) {
       let value = e.target.value.replace(/\D/g, '');
       value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
       value = value.replace(/(\d)(\d{4})$/, '$1-$2');
