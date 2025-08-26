@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Barba Barber - Área do Cliente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0b0b0b;
+            --bg-soft: #111111;
+            --bg-card: #131313;
+            --gold: #d6b25b;
+            --gold-light: #f1d08a;
+            --gold-dark: #b8954a;
+            --text: #efefef;
+            --text-muted: #bcbcbc;
+            --text-dark: #888888;
+            --stroke: rgba(214, 178, 91, 0.2);
+            --stroke-light: rgba(214, 178, 91, 0.1);
+            --radius: 16px;
+            --radius-small: 8px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(17, 17, 17, 0.9));
+            border-bottom: 1px solid var(--stroke);
+            padding: 16px 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* LOGO STYLING */
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            background: rgba(214, 178, 91, 0.1);
+            border: 1px solid var(--stroke);
+            transition: var(--transition);
+        }
+
+        .profile:hover {
+            background: rgba(214, 178, 91, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .profile-text {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .profile-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        /* GRID LAYOUTS */
+        .grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .grid-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin: 0;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        /* TABLES */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--stroke-light);
+            transition: var(--transition);
+        }
+
+        .info-table tr:hover {
+            background: rgba(214, 178, 91, 0.05);
+        }
+
+        .info-table td {
+            padding: 16px 0;
+            vertical-align: top;
+        }
+
+        .info-table td:first-child {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 40%;
+        }
+
+        .info-table td:last-child {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #0b0b0b;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: var(--radius-small);
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(214, 178, 91, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(214, 178, 91, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: #0b0b0b;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        /* TIME SLOTS */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .time-slot {
+            padding: 12px 16px;
+            text-align: center;
+            background: rgba(214, 178, 91, 0.1);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius-small);
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-slot:hover {
+            background: var(--gold);
+            color: #0b0b0b;
+            transform: translateY(-2px);
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(214, 178, 91, 0.05);
+            border-radius: var(--radius-small);
+            border: 1px solid var(--stroke-light);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* MAP */
+        .map-container {
+            border-radius: var(--radius-small);
+            overflow: hidden;
+            border: 1px solid var(--stroke);
+            margin-top: 16px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+
+        /* PROMOTION BANNER */
+        .promotion-banner {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: #0b0b0b;
+            padding: 24px;
+            border-radius: var(--radius);
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--bg-soft);
+            border-top: 1px solid var(--stroke);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 48px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .brand-logo {
+                height: 32px;
+            }
+
+            .profile {
+                gap: 12px;
+                padding: 6px 12px;
+            }
+
+            .profile-text {
+                display: none;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .info-table td:first-child {
+                width: 45%;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 16px;
+            }
+
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <img src="assets/logobgremoved.png" alt="Logo El Rhuan Barber" class="brand-logo" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="brand-fallback" style="display: none; font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold);">
+                El Barba Barber
+            </div>
+            <div class="profile">
+                <span class="profile-text">Bem-vindo, Yan!</span>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                    alt="Foto do usuário" class="profile-avatar">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- RESUMO ESTATÍSTICAS -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Dashboard</h2>
+                <i class="fas fa-chart-line card-icon"></i>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Cortes realizados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">120</div>
+                    <div class="stat-label">Pontos fidelidade</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Dias restantes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">R$ 450</div>
+                    <div class="stat-label">Valor economizado</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-2">
+            <!-- RESUMO DETALHADO -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Resumo da Conta</h2>
+                    <i class="fas fa-user-circle card-icon"></i>
+                </div>
+                <table class="info-table">
+                    <tr>
+                        <td>Último corte</td>
+                        <td><strong>12 de Agosto às 18:30</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Próximo agendamento</td>
+                        <td><strong>25 de Agosto às 19:00</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Plano ativo</td>
+                        <td><strong>Cartão Fidelidade</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><span style="color: var(--gold);">⭐ Cliente VIP</span></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- AGENDAMENTOS RÁPIDOS -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Agendamento Rápido</h2>
+                    <i class="fas fa-calendar-alt card-icon"></i>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 16px;">Horários disponíveis para hoje:</p>
+                <div class="time-slots">
+                    <div class="time-slot">18:00</div>
+                    <div class="time-slot">18:30</div>
+                    <div class="time-slot">19:00</div>
+                    <div class="time-slot">19:30</div>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn">
+                        <i class="fas fa-plus"></i>
+                        Novo Agendamento
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-calendar"></i>
+                        Ver Agenda
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-2">
+            <!-- FICHA DE PREFERÊNCIAS -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Suas Preferências</h2>
+                    <i class="fas fa-heart card-icon"></i>
+                </div>
+                <table class="info-table">
+                    <tr>
+                        <td>Estilo favorito</td>
+                        <td><strong>Clássico degradê</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Produtos preferidos</td>
+                        <td><strong>Pomada Modeladora 150g</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Barbeiro preferido</td>
+                        <td><strong>Rhuan Pedro</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Observações</td>
+                        <td>"Melhor atendimento da cidade!"</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- PLANO E SUPORTE -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Plano & Suporte</h2>
+                    <i class="fas fa-crown card-icon"></i>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--gold); margin-bottom: 8px;">Plano Fidelidade</h3>
+                    <p style="color: var(--text-muted);">3 cortes restantes no seu plano atual</p>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn">
+                        <i class="fas fa-gift"></i>
+                        Ver Benefícios
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-exchange-alt"></i>
+                        Trocar Plano
+                    </a>
+                </div>
+                <hr style="border: none; height: 1px; background: var(--stroke); margin: 24px 0;">
+                <div>
+                    <h3 style="color: var(--gold); margin-bottom: 12px;">Central de Ajuda</h3>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Contato
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-star"></i>
+                            Avaliar
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROMOÇÃO DESTAQUE -->
+        <section class="promotion-banner">
+            <i class="fas fa-fire" style="margin-right: 12px; font-size: 1.3rem;"></i>
+            🎉 PROMOÇÃO ESPECIAL: Platinado por apenas R$ 100,00 - Mês da Fidelidade!
+            <i class="fas fa-fire" style="margin-left: 12px; font-size: 1.3rem;"></i>
+        </section>
+
+        <div class="grid grid-2">
+            <!-- SOBRE O BARBEIRO -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Seu Barbeiro</h2>
+                    <i class="fas fa-user-tie card-icon"></i>
+                </div>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="assets/proprietario.jpg"
+                        alt="Rhuan Pedro"
+                        style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 12px;">
+                    <h3 style="color: var(--gold); margin-bottom: 4px;">Rhuan Pedro</h3>
+                    <p style="color: var(--text-muted); font-style: italic;">"CEO da El Rhuan Barber"</p>
+                </div>
+                <p style="text-align: center; color: var(--text-muted);">
+                    <i class="fas fa-calendar-star" style="color: var(--gold); margin-right: 8px;"></i>
+                    Especialista do mês de Setembro
+                </p>
+            </section>
+
+            <!-- LOCALIZAÇÃO -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Nossa Localização</h2>
+                    <i class="fas fa-map-marker-alt card-icon"></i>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <p><strong>Av. Brasil, 519F - Centro</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">
+                        <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                        Seg-Sex: 9h às 19h | Sáb: 8h às 17h
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn">
+                        <i class="fas fa-directions"></i>
+                        Como Chegar
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Ligar
+                    </a>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7501.988516163541!2d-48.37978348801465!3d-19.92464679500025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bb3925790e670d%3A0xc03d82f1f7d8666c!2sEl%20Rhuan%20Barber!5e0!3m2!1spt-BR!2sbr!4v1756168308862!5m2!1spt-BR!2sbr"
+                        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 El Barba Barber — Todos os direitos reservados</p>
+        <p style="margin-top: 8px; font-size: 0.9rem;">
+            Desenvolvido com <i class="fas fa-heart" style="color: var(--gold);"></i> para nossos clientes
+        </p>
+    </footer>
+
+    <script>
+        // Adicionar interatividade aos slots de horário
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function () {
+                // Remove seleção anterior
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                // Adiciona seleção atual
+                this.classList.add('selected');
+                this.style.background = 'var(--gold)';
+                this.style.color = '#0b0b0b';
+            });
+        });
+
+        // Animação suave ao carregar
+        window.addEventListener('load', function () {
+            document.querySelectorAll('.card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+
+</html>
