@@ -466,9 +466,10 @@
     <!-- HEADER -->
     <header class="header">
         <div class="header-content">
-            <img src="assets/logobgremoved.png" alt="Logo El Rhuan Barber" class="brand-logo" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="brand-fallback" style="display: none; font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold);">
+            <img src="assets/logobgremoved.png" alt="Logo El Rhuan Barber" class="brand-logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="brand-fallback"
+                style="display: none; font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold);">
                 El Barba Barber
             </div>
             <div class="profile">
@@ -480,31 +481,32 @@
     </header>
 
     <main class="container">
-        <!-- RESUMO ESTATÍSTICAS -->
+        <!-- AGENDAMENTOS RÁPIDOS -->
         <section class="card">
             <div class="card-header">
-                <h2 class="card-title">Dashboard</h2>
-                <i class="fas fa-chart-line card-icon"></i>
+                <h2 class="card-title">Agendamento Rápido</h2>
+                <i class="fas fa-calendar-alt card-icon"></i>
             </div>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">12</div>
-                    <div class="stat-label">Cortes realizados</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">120</div>
-                    <div class="stat-label">Pontos fidelidade</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">Dias restantes</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">R$ 450</div>
-                    <div class="stat-label">Valor economizado</div>
-                </div>
+            <p style="color: var(--text-muted); margin-bottom: 16px;">Horários disponíveis para hoje:</p>
+            <div class="time-slots">
+                <div class="time-slot">18:00</div>
+                <div class="time-slot">18:30</div>
+                <div class="time-slot">19:00</div>
+                <div class="time-slot">19:30</div>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn">
+                    <i class="fas fa-plus"></i>
+                    Novo Agendamento
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-calendar"></i>
+                    Ver Agenda
+                </a>
             </div>
         </section>
+        </div>
+
 
         <div class="grid grid-2">
             <!-- RESUMO DETALHADO -->
@@ -533,154 +535,154 @@
                 </table>
             </section>
 
-            <!-- AGENDAMENTOS RÁPIDOS -->
+            <!-- RESUMO ESTATÍSTICAS -->
             <section class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Agendamento Rápido</h2>
-                    <i class="fas fa-calendar-alt card-icon"></i>
+                    <h2 class="card-title">Dashboard</h2>
+                    <i class="fas fa-chart-line card-icon"></i>
                 </div>
-                <p style="color: var(--text-muted); margin-bottom: 16px;">Horários disponíveis para hoje:</p>
-                <div class="time-slots">
-                    <div class="time-slot">18:00</div>
-                    <div class="time-slot">18:30</div>
-                    <div class="time-slot">19:00</div>
-                    <div class="time-slot">19:30</div>
-                </div>
-                <div class="btn-group">
-                    <a href="#" class="btn">
-                        <i class="fas fa-plus"></i>
-                        Novo Agendamento
-                    </a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-calendar"></i>
-                        Ver Agenda
-                    </a>
-                </div>
-            </section>
-        </div>
-
-        <div class="grid grid-2">
-            <!-- FICHA DE PREFERÊNCIAS -->
-            <section class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Suas Preferências</h2>
-                    <i class="fas fa-heart card-icon"></i>
-                </div>
-                <table class="info-table">
-                    <tr>
-                        <td>Estilo favorito</td>
-                        <td><strong>Clássico degradê</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Produtos preferidos</td>
-                        <td><strong>Pomada Modeladora 150g</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Barbeiro preferido</td>
-                        <td><strong>Rhuan Pedro</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Observações</td>
-                        <td>"Melhor atendimento da cidade!"</td>
-                    </tr>
-                </table>
-            </section>
-
-            <!-- PLANO E SUPORTE -->
-            <section class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Plano & Suporte</h2>
-                    <i class="fas fa-crown card-icon"></i>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <h3 style="color: var(--gold); margin-bottom: 8px;">Plano Fidelidade</h3>
-                    <p style="color: var(--text-muted);">3 cortes restantes no seu plano atual</p>
-                </div>
-                <div class="btn-group">
-                    <a href="#" class="btn">
-                        <i class="fas fa-gift"></i>
-                        Ver Benefícios
-                    </a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-exchange-alt"></i>
-                        Trocar Plano
-                    </a>
-                </div>
-                <hr style="border: none; height: 1px; background: var(--stroke); margin: 24px 0;">
-                <div>
-                    <h3 style="color: var(--gold); margin-bottom: 12px;">Central de Ajuda</h3>
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-secondary">
-                            <i class="fas fa-phone"></i>
-                            Contato
-                        </a>
-                        <a href="#" class="btn btn-secondary">
-                            <i class="fas fa-star"></i>
-                            Avaliar
-                        </a>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Cortes realizados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">120</div>
+                        <div class="stat-label">Pontos fidelidade</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Dias restantes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">R$ 450</div>
+                        <div class="stat-label">Valor economizado</div>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- PROMOÇÃO DESTAQUE -->
-        <section class="promotion-banner">
-            <i class="fas fa-fire" style="margin-right: 12px; font-size: 1.3rem;"></i>
-            🎉 PROMOÇÃO ESPECIAL: Platinado por apenas R$ 100,00 - Mês da Fidelidade!
-            <i class="fas fa-fire" style="margin-left: 12px; font-size: 1.3rem;"></i>
-        </section>
 
-        <div class="grid grid-2">
-            <!-- SOBRE O BARBEIRO -->
-            <section class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Seu Barbeiro</h2>
-                    <i class="fas fa-user-tie card-icon"></i>
-                </div>
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <img src="assets/proprietario.jpg"
-                        alt="Rhuan Pedro"
-                        style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 12px;">
-                    <h3 style="color: var(--gold); margin-bottom: 4px;">Rhuan Pedro</h3>
-                    <p style="color: var(--text-muted); font-style: italic;">"CEO da El Rhuan Barber"</p>
-                </div>
-                <p style="text-align: center; color: var(--text-muted);">
-                    <i class="fas fa-calendar-star" style="color: var(--gold); margin-right: 8px;"></i>
-                    Especialista do mês de Setembro
-                </p>
+            <div class="grid grid-2">
+                <!-- FICHA DE PREFERÊNCIAS -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Suas Preferências</h2>
+                        <i class="fas fa-heart card-icon"></i>
+                    </div>
+                    <table class="info-table">
+                        <tr>
+                            <td>Estilo favorito</td>
+                            <td><strong>Clássico degradê</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Produtos preferidos</td>
+                            <td><strong>Pomada Modeladora 150g</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Barbeiro preferido</td>
+                            <td><strong>Rhuan Pedro</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Observações</td>
+                            <td>"Melhor atendimento da cidade!"</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- PLANO E SUPORTE -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Plano & Suporte</h2>
+                        <i class="fas fa-crown card-icon"></i>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--gold); margin-bottom: 8px;">Plano Fidelidade</h3>
+                        <p style="color: var(--text-muted);">3 cortes restantes no seu plano atual</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn">
+                            <i class="fas fa-gift"></i>
+                            Ver Benefícios
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-exchange-alt"></i>
+                            Trocar Plano
+                        </a>
+                    </div>
+                    <hr style="border: none; height: 1px; background: var(--stroke); margin: 24px 0;">
+                    <div>
+                        <h3 style="color: var(--gold); margin-bottom: 12px;">Central de Ajuda</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-phone"></i>
+                                Contato
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-star"></i>
+                                Avaliar
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- PROMOÇÃO DESTAQUE -->
+            <section class="promotion-banner">
+                <i class="fas fa-fire" style="margin-right: 12px; font-size: 1.3rem;"></i>
+                🎉 PROMOÇÃO ESPECIAL: Platinado por apenas R$ 100,00 - Mês da Fidelidade!
+                <i class="fas fa-fire" style="margin-left: 12px; font-size: 1.3rem;"></i>
             </section>
 
-            <!-- LOCALIZAÇÃO -->
-            <section class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Nossa Localização</h2>
-                    <i class="fas fa-map-marker-alt card-icon"></i>
-                </div>
-                <div style="margin-bottom: 16px;">
-                    <p><strong>Av. Brasil, 519F - Centro</strong></p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>
-                        Seg-Sex: 9h às 19h | Sáb: 8h às 17h
+            <div class="grid grid-2">
+                <!-- SOBRE O BARBEIRO -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Seu Barbeiro</h2>
+                        <i class="fas fa-user-tie card-icon"></i>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="assets/proprietario.jpg" alt="Rhuan Pedro"
+                            style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 12px;">
+                        <h3 style="color: var(--gold); margin-bottom: 4px;">Rhuan Pedro</h3>
+                        <p style="color: var(--text-muted); font-style: italic;">"CEO da El Rhuan Barber"</p>
+                    </div>
+                    <p style="text-align: center; color: var(--text-muted);">
+                        <i class="fas fa-calendar-star" style="color: var(--gold); margin-right: 8px;"></i>
+                        Especialista do mês de Setembro
                     </p>
-                </div>
-                <div class="btn-group">
-                    <a href="#" class="btn">
-                        <i class="fas fa-directions"></i>
-                        Como Chegar
-                    </a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-phone"></i>
-                        Ligar
-                    </a>
-                </div>
-                <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7501.988516163541!2d-48.37978348801465!3d-19.92464679500025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bb3925790e670d%3A0xc03d82f1f7d8666c!2sEl%20Rhuan%20Barber!5e0!3m2!1spt-BR!2sbr!4v1756168308862!5m2!1spt-BR!2sbr"
-                        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </section>
-        </div>
+                </section>
+
+                <!-- LOCALIZAÇÃO -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Nossa Localização</h2>
+                        <i class="fas fa-map-marker-alt card-icon"></i>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <p><strong>Av. Brasil, 519F - Centro</strong></p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                            Seg-Sex: 9h às 19h | Sáb: 8h às 17h
+                        </p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn">
+                            <i class="fas fa-directions"></i>
+                            Como Chegar
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Ligar
+                        </a>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7501.988516163541!2d-48.37978348801465!3d-19.92464679500025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bb3925790e670d%3A0xc03d82f1f7d8666c!2sEl%20Rhuan%20Barber!5e0!3m2!1spt-BR!2sbr!4v1756168308862!5m2!1spt-BR!2sbr"
+                            width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+            </div>
     </main>
 
     <footer class="footer">
