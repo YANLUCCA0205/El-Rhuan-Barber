@@ -243,7 +243,6 @@ function Home() {
       <section id="quem-somos" className="section about">
         <div className="container">
           <h2 className="titulo-centralizado">Quem Somos</h2>
-
           {/* Primeiro bloco: Proprietário */}
           <div className="about-block">
             <div className="photo">
